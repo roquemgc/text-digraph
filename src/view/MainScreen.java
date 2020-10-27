@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -11,28 +10,16 @@ import javax.swing.JButton;
 import main.HandleFile;
 
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.StringReader;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
 
 public class MainScreen extends JFrame {
 
 	private JPanel contentPane;
 	private HandleFile handleFile = new HandleFile();
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainScreen frame = new MainScreen();
-					frame.setLocationRelativeTo(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	public MainScreen() {
 		setTitle("Txt Converter");
@@ -42,8 +29,6 @@ public class MainScreen extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 		
 		JTextArea txaFileContent = new JTextArea();
 		txaFileContent.setEditable(false);
@@ -55,10 +40,19 @@ public class MainScreen extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 
 				try {
-					handleFile.PickFile();
-					txaFileContent.read(handleFile.PutFile(frame), "Reading File");
-				} catch (Exception e) {
+					// Receive the string of picked file
+					String fileContent = handleFile.pickFile();
 					
+					// Convert the txt file content to reader format
+					BufferedReader reader = new BufferedReader(new StringReader(fileContent));
+					
+					// Put the reader on TextArea
+					txaFileContent.read(reader, "Reading File");
+					
+					// Print the content of the file
+					System.out.println(fileContent);
+				} catch (Exception e) {
+					System.out.println(e);
 				}
 
 			}
