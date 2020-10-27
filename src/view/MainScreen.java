@@ -10,11 +10,9 @@ import javax.swing.JButton;
 import main.HandleFile;
 
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.StringReader;
 import java.awt.event.ActionEvent;
 
-import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 public class MainScreen extends JFrame {
 
@@ -30,24 +28,21 @@ public class MainScreen extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JTextArea txaFileContent = new JTextArea();
-		txaFileContent.setEditable(false);
-		txaFileContent.setBounds(33, 30, 449, 223);
-		contentPane.add(txaFileContent);
+		JTextPane txpContent = new JTextPane();
+		txpContent.setEditable(false);
+		txpContent.setBounds(15, 34, 481, 192);
+		contentPane.add(txpContent);
 		
-		JButton btnOpenFile = new JButton("Escolher arquivo");
+		JButton btnOpenFile = new JButton("Pick file");
 		btnOpenFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
 				try {
 					// Receive the string of picked file
-					String fileContent = handleFile.pickFile();
+					String fileContent = handleFile.pickFile();	
 					
-					// Convert the txt file content to reader format
-					BufferedReader reader = new BufferedReader(new StringReader(fileContent));
-					
-					// Put the reader on TextArea
-					txaFileContent.read(reader, "Reading File");
+					// Put the txt content on JTextPane
+					txpContent.setText(fileContent);
 					
 					// Print the content of the file
 					System.out.println(fileContent);
@@ -60,8 +55,12 @@ public class MainScreen extends JFrame {
 		btnOpenFile.setBounds(59, 278, 177, 25);
 		contentPane.add(btnOpenFile);
 		
-		JButton btnConvert = new JButton("Converter");
-		btnConvert.setBounds(282, 278, 177, 25);
+		JButton btnConvert = new JButton("Convert");
+		btnConvert.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnConvert.setBounds(271, 278, 177, 25);
 		contentPane.add(btnConvert);
 
 	}
