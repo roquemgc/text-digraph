@@ -1,12 +1,13 @@
 package view;
 
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 
+import main.ConvertString;
 import main.HandleFile;
 
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ public class MainScreen extends JFrame {
 
 	private JPanel contentPane;
 	private HandleFile handleFile = new HandleFile();
+	public String fileContent;
 
 	public MainScreen() {
 		setTitle("Txt Converter");
@@ -39,13 +41,15 @@ public class MainScreen extends JFrame {
 
 				try {
 					// Receive the string of picked file
-					String fileContent = handleFile.pickFile();	
+					fileContent = handleFile.pickFile();	
 					
+					System.out.println("AAA"+fileContent);
 					// Put the txt content on JTextPane
 					txpContent.setText(fileContent);
 					
 					// Print the content of the file
 					System.out.println(fileContent);
+					
 				} catch (Exception e) {
 					System.out.println(e);
 				}
@@ -57,8 +61,37 @@ public class MainScreen extends JFrame {
 		
 		JButton btnConvert = new JButton("Convert");
 		btnConvert.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent arg0) {
+				
+					try {
+					
+					if(fileContent == null) {
+						
+						JOptionPane.showMessageDialog(null,"Please select a file first.");
+						
+					}else {
+						
+						ConvertString chamar = new ConvertString(fileContent);
+						
+						chamar.RemovePontuationsString();
+						
+						chamar.GuardarNovoTextoDoTxtEmLista();
+						
+						chamar.OrdenarArraysComPalavrasDoTextoTxt();
+						
+						chamar.ElaborandoTextoFinal();
+					
+					}
+					
+					} catch (Exception e) {
+						
+						System.out.println(e);
+						
+					}
+					
 			}
+		
 		});
 		btnConvert.setBounds(271, 278, 177, 25);
 		contentPane.add(btnConvert);
