@@ -21,7 +21,7 @@ private List<String> textoFinal = new ArrayList<String>();
 	}
 
 	public void RemovePontuationsString(){	
-	
+		
 		textoDoTxtMinusculo = recebeTextoDoTxt.toLowerCase();
 		
 		//textoDoTxtMinusculo = textoDoTxtMinusculo.replaceAll("¬.,@#/|!?%$&*()+=-—_§;][}{ºª'\\" , "");
@@ -59,13 +59,13 @@ private List<String> textoFinal = new ArrayList<String>();
 		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "'" , "");
 		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "\\" , "");
 		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "\"" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "\n" , "");
+		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "\\n" , "");
 
 	}
 	
 	public void GuardarNovoTextoDoTxtEmLista(){
 		
-		String[] textoNormalizado = textoDoTxtMinusculo.split(" ");
+		String[] textoNormalizado = textoDoTxtMinusculo.split("\\s");
 		
 		textoSeparado = Arrays.asList(textoNormalizado);
 		

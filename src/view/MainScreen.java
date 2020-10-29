@@ -43,7 +43,6 @@ public class MainScreen extends JFrame {
 					// Receive the string of picked file
 					fileContent = handleFile.pickFile();	
 					
-					System.out.println("AAA"+fileContent);
 					// Put the txt content on JTextPane
 					txpContent.setText(fileContent);
 					
