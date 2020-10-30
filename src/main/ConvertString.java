@@ -4,133 +4,153 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class ConvertString {
 
-private String recebeTextoDoTxt;
-private String textoDoTxtMinusculo;
-private List<String> textoSeparado = new ArrayList<String>();
-private List<String> textoSeparadoOrdenado = new ArrayList<String>();
-private List<String> proximasPalavrasDasPalavras = new ArrayList<String>();
-private List<String> textoFinal = new ArrayList<String>();
+private String receiveTextOfTheTxtExtensionFile;
+private String textOfTheTxtExtensionFileInLowCase;
+private List<String> textSeparate = new ArrayList<String>();
+private List<String> textSeparateInOrder = new ArrayList<String>();
+private List<String> nextWordsOfTheWords = new ArrayList<String>();
+private List<String> finalText = new ArrayList<String>();
  
-	public ConvertString(String recebeTextoDoTxt){
+	public ConvertString(String recebeTextoDoTxt){  
 			
-		this.recebeTextoDoTxt = recebeTextoDoTxt;
+		this.receiveTextOfTheTxtExtensionFile = recebeTextoDoTxt;
 	}
 
 	public void RemovePontuationsString(){	
 		
-		textoDoTxtMinusculo = recebeTextoDoTxt.toLowerCase();
+		textOfTheTxtExtensionFileInLowCase = receiveTextOfTheTxtExtensionFile.toLowerCase();
 		
-		//textoDoTxtMinusculo = textoDoTxtMinusculo.replaceAll("¬.,@#/|!?%$&*()+=-—_§;][}{ºª'\\" , "");
+		//textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replaceAll("ï¿½.,@#/|!?%$&*()+=-ï¿½_ï¿½;][}{ï¿½ï¿½'\\" , "");
 		
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( ">" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "<" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "¬" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "." , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "," , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "@" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "#" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "/" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "|" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "!" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "?" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "%" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "$" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "&" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "*" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "(" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( ")" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "+" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "=" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "-" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "—" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "_" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "§" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( ";" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "]" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "[" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "}" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "{" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "º" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "ª" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "'" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "\\" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "\"" , "");
-		textoDoTxtMinusculo = textoDoTxtMinusculo.replace( "\\n" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( ">" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "<" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "ï¿½" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "." , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "," , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "@" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "#" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "/" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "|" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "!" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "?" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "%" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "$" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "&" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "*" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "(" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( ")" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "+" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "=" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "-" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "ï¿½" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "_" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "ï¿½" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( ";" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "]" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "[" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "}" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "{" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "ï¿½" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "ï¿½" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "'" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "\\" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "\"" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "\\n" , "");
 
 	}
 	
-	public void GuardarNovoTextoDoTxtEmLista(){
+	public void saveNewTextOftheTxtInTheList(){
 		
-		String[] textoNormalizado = textoDoTxtMinusculo.split("\\s");
+		String[] textNormalized = textOfTheTxtExtensionFileInLowCase.split("\\s");
 		
-		textoSeparado = Arrays.asList(textoNormalizado);
-		
-	}
-	
-	public void OrdenarArraysComPalavrasDoTextoTxt(){
-		
-		textoSeparadoOrdenado = new ArrayList<String>(textoSeparado);
-		
-		Collections.sort(textoSeparadoOrdenado);
+		textSeparate = Arrays.asList(textNormalized);
 		
 	}
 	
-	public void ElaborandoTextoFinal() {
+	public void OrderArraysWithWordsOfTheTextTxt(){
 		
-		int guardaIndicePalavra = -1;
+		textSeparateInOrder = new ArrayList<String>(textSeparate);
 		
-		for(int indicePrincipal = 0; indicePrincipal < textoSeparado.size(); indicePrincipal++) {
+		textSeparateInOrder = textSeparateInOrder.stream().distinct().collect(Collectors.toList());
 		
-			for(int i = 0; i < textoSeparado.size(); i++){
+		Collections.sort(textSeparateInOrder);
+		
+	}
+	
+	public void GeneratorFinalText() {
+	
+		int saveIndexOfTheWord = -1;
+		
+		for(int indexMain = 0; indexMain < textSeparateInOrder.size(); indexMain++) {
+		
+			for(int i = 0; i < textSeparate.size(); i++){
 					
 				int index = 0;
 					
-				if (textoSeparadoOrdenado.get(indicePrincipal).equals(textoSeparado.get(i))){
+				if (textSeparateInOrder.get(indexMain).equals(textSeparate.get(i))){
 						
 				    index = i;
 				    	
 				    index = index + 1;
 				    	
-				    if (textoSeparado.size() > index && !textoSeparado.get(index).equals(textoSeparadoOrdenado.get(indicePrincipal))) {
+				    if (textSeparate.size() > index && !textSeparate.get(index).equals(textSeparateInOrder.get(indexMain))) {
 						
-				    	guardaIndicePalavra = indicePrincipal;
+				    	saveIndexOfTheWord = indexMain;
 				    	
-				    	proximasPalavrasDasPalavras.add(textoSeparado.get(index));
-							
+				    	nextWordsOfTheWords.add(textSeparate.get(index));
+				 							
 					}
 				}				
 					
 			}
 			
-			if(guardaIndicePalavra != -1 && proximasPalavrasDasPalavras.size() != 0 && !proximasPalavrasDasPalavras.isEmpty() && proximasPalavrasDasPalavras != null) {
+			if(saveIndexOfTheWord != -1 && nextWordsOfTheWords.size() != 0 && !nextWordsOfTheWords.isEmpty() && nextWordsOfTheWords != null) {
 			
-			textoFinal.add(textoSeparadoOrdenado.get(guardaIndicePalavra));
+			finalText.add(textSeparateInOrder.get(saveIndexOfTheWord));
 			
-			textoFinal.add(", "); // teste
+			nextWordsOfTheWords = nextWordsOfTheWords.stream().distinct().collect(Collectors.toList());
 			
-			Collections.sort(proximasPalavrasDasPalavras);
+			Collections.sort(nextWordsOfTheWords);
 			
-			textoFinal.addAll(proximasPalavrasDasPalavras);
+			finalText.addAll(nextWordsOfTheWords);
 			
-			textoFinal.add("\n"); // teste
+			finalText.add("\n"); 
+			
 			
 			}
 				
-			proximasPalavrasDasPalavras.clear();
+			nextWordsOfTheWords.clear();
 			
 		}
 			
-		for (String string : textoFinal) {
+		int i;
+		
+		for (i = 0; i < finalText.size(); i++) {
 			
-			System.out.printf(string);
+			System.out.printf(finalText.get(i));
+			
+			int indexOfTheNextWord = i+1;
+			
+			if(indexOfTheNextWord < finalText.size()) {
 				
+				if(finalText.get(indexOfTheNextWord).equals("\n") || (finalText.get(i).equals("\n"))) {
+					
+					continue;
+					
+				}else {
+					
+					System.out.printf(", ");
+					
+				}
+			}
 		}
 	}
-	
 }
+
 
 

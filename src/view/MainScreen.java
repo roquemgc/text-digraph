@@ -69,17 +69,17 @@ public class MainScreen extends JFrame {
 						
 						JOptionPane.showMessageDialog(null,"Please select a file first.");
 						
-					}else {
+					}else{
 						
-						ConvertString chamar = new ConvertString(fileContent);
+						ConvertString call = new ConvertString(fileContent);
 						
-						chamar.RemovePontuationsString();
+						call.RemovePontuationsString();
 						
-						chamar.GuardarNovoTextoDoTxtEmLista();
+						call.saveNewTextOftheTxtInTheList();
 						
-						chamar.OrdenarArraysComPalavrasDoTextoTxt();
+						call.OrderArraysWithWordsOfTheTextTxt();
 						
-						chamar.ElaborandoTextoFinal();
+						call.GeneratorFinalText();
 					
 					}
 					
@@ -92,6 +92,7 @@ public class MainScreen extends JFrame {
 			}
 		
 		});
+		
 		btnConvert.setBounds(271, 278, 177, 25);
 		contentPane.add(btnConvert);
 
