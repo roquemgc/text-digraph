@@ -16,12 +16,12 @@ private List<String> textSeparateInOrder = new ArrayList<String>();
 private List<String> nextWordsOfTheWords = new ArrayList<String>();
 private List<String> finalText = new ArrayList<String>();
  
-	public ConvertString(String recebeTextoDoTxt){  
+	public ConvertString(String receiveTextOfTheTxt){  
 			
-		this.receiveTextOfTheTxtExtensionFile = recebeTextoDoTxt;
+		this.receiveTextOfTheTxtExtensionFile = receiveTextOfTheTxt;
 	}
 
-	public void RemovePontuationsString(){	
+	public void RemovePunctuationString(){	
 		
 		textOfTheTxtExtensionFileInLowCase = receiveTextOfTheTxtExtensionFile.toLowerCase();
 		
@@ -64,7 +64,7 @@ private List<String> finalText = new ArrayList<String>();
 
 	}
 	
-	public void saveNewTextOftheTxtInTheList(){
+	public void SaveNewTextOftheTxtInTheList(){
 		
 		String[] textNormalized = textOfTheTxtExtensionFileInLowCase.split("\\s");
 		
@@ -115,7 +115,7 @@ private List<String> finalText = new ArrayList<String>();
 			
 			nextWordsOfTheWords = nextWordsOfTheWords.stream().distinct().collect(Collectors.toList());
 			
-			Collections.sort(nextWordsOfTheWords);
+			//Collections.sort(nextWordsOfTheWords);
 			
 			finalText.addAll(nextWordsOfTheWords);
 			

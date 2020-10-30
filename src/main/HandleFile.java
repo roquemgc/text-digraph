@@ -11,7 +11,7 @@ public class HandleFile {
 	StringBuilder sb = new StringBuilder();
 	
 	// Pick the txt file and return the content in string format
-	public String pickFile() throws Exception{
+	public String PickFile() throws Exception{
   
 		if(fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 			

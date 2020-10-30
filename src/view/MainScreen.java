@@ -19,7 +19,7 @@ public class MainScreen extends JFrame {
 
 	private JPanel contentPane;
 	private HandleFile handleFile = new HandleFile();
-	public String fileContent;
+	private String fileContent;
 
 	public MainScreen() {
 		setTitle("Txt Converter");
@@ -41,7 +41,7 @@ public class MainScreen extends JFrame {
 
 				try {
 					// Receive the string of picked file
-					fileContent = handleFile.pickFile();	
+					fileContent = handleFile.PickFile();	
 					
 					// Put the txt content on JTextPane
 					txpContent.setText(fileContent);
@@ -73,9 +73,9 @@ public class MainScreen extends JFrame {
 						
 						ConvertString call = new ConvertString(fileContent);
 						
-						call.RemovePontuationsString();
+						call.RemovePunctuationString();
 						
-						call.saveNewTextOftheTxtInTheList();
+						call.SaveNewTextOftheTxtInTheList();
 						
 						call.OrderArraysWithWordsOfTheTextTxt();
 						
@@ -92,7 +92,6 @@ public class MainScreen extends JFrame {
 			}
 		
 		});
-		
 		btnConvert.setBounds(271, 278, 177, 25);
 		contentPane.add(btnConvert);
 
