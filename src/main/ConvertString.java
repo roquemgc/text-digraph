@@ -11,8 +11,8 @@ public class ConvertString {
 
 private String receiveTextOfTheTxtExtensionFile;
 private String textOfTheTxtExtensionFileInLowCase;
-private List<String> textSeparate = new ArrayList<String>();
-private List<String> textSeparateInOrder = new ArrayList<String>();
+private List<String> textSeparateByWords = new ArrayList<String>();
+private List<String> textSeparateByWordsInOrder = new ArrayList<String>();
 private List<String> nextWordsOfTheWords = new ArrayList<String>();
 private List<String> finalText = new ArrayList<String>();
  
@@ -25,11 +25,10 @@ private List<String> finalText = new ArrayList<String>();
 		
 		textOfTheTxtExtensionFileInLowCase = receiveTextOfTheTxtExtensionFile.toLowerCase();
 		
-		//textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replaceAll("�.,@#/|!?%$&*()+=-�_�;][}{��'\\" , "");
-		
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "%" , "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( ">" , "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "<" , "");
-		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "�" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "¬" , "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "." , "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "," , "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "@" , "");
@@ -47,38 +46,40 @@ private List<String> finalText = new ArrayList<String>();
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "+" , "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "=" , "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "-" , "");
-		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "�" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "§" , "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "_" , "");
-		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "�" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( ":" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "–" , "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( ";" , "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "]" , "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "[" , "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "}" , "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "{" , "");
-		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "�" , "");
-		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "�" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "ª" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "º" , "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "'" , "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "\\" , "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "\"" , "");
-		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "\\n" , "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace( "⁃" , "");
+		
 
 	}
 	
 	public void SaveNewTextOftheTxtInTheList(){
 		
-		String[] textNormalized = textOfTheTxtExtensionFileInLowCase.split("\\s");
+		String[] textNormalized = textOfTheTxtExtensionFileInLowCase.split("\\s+");
 		
-		textSeparate = Arrays.asList(textNormalized);
+		textSeparateByWords = Arrays.asList(textNormalized);
 		
 	}
 	
 	public void OrderArraysWithWordsOfTheTextTxt(){
 		
-		textSeparateInOrder = new ArrayList<String>(textSeparate);
+		textSeparateByWordsInOrder = new ArrayList<String>(textSeparateByWords);
 		
-		textSeparateInOrder = textSeparateInOrder.stream().distinct().collect(Collectors.toList());
+		textSeparateByWordsInOrder = textSeparateByWordsInOrder.stream().distinct().collect(Collectors.toList());
 		
-		Collections.sort(textSeparateInOrder);
+		Collections.sort(textSeparateByWordsInOrder);
 		
 	}
 	
@@ -86,23 +87,23 @@ private List<String> finalText = new ArrayList<String>();
 	
 		int saveIndexOfTheWord = -1;
 		
-		for(int indexMain = 0; indexMain < textSeparateInOrder.size(); indexMain++) {
+		for(int indexMain = 0; indexMain < textSeparateByWordsInOrder.size(); indexMain++) {
 		
-			for(int i = 0; i < textSeparate.size(); i++){
+			for(int i = 0; i < textSeparateByWords.size(); i++){
 					
 				int index = 0;
 					
-				if (textSeparateInOrder.get(indexMain).equals(textSeparate.get(i))){
+				if (textSeparateByWordsInOrder.get(indexMain).equals(textSeparateByWords.get(i))){
 						
 				    index = i;
 				    	
 				    index = index + 1;
 				    	
-				    if (textSeparate.size() > index && !textSeparate.get(index).equals(textSeparateInOrder.get(indexMain))) {
+				    if (textSeparateByWords.size() > index && !textSeparateByWords.get(index).equals(textSeparateByWordsInOrder.get(indexMain))) {
 						
 				    	saveIndexOfTheWord = indexMain;
 				    	
-				    	nextWordsOfTheWords.add(textSeparate.get(index));
+				    	nextWordsOfTheWords.add(textSeparateByWords.get(index));
 				 							
 					}
 				}				
@@ -111,7 +112,7 @@ private List<String> finalText = new ArrayList<String>();
 			
 			if(saveIndexOfTheWord != -1 && nextWordsOfTheWords.size() != 0 && !nextWordsOfTheWords.isEmpty() && nextWordsOfTheWords != null) {
 			
-			finalText.add(textSeparateInOrder.get(saveIndexOfTheWord));
+			finalText.add(textSeparateByWordsInOrder.get(saveIndexOfTheWord));
 			
 			nextWordsOfTheWords = nextWordsOfTheWords.stream().distinct().collect(Collectors.toList());
 			
