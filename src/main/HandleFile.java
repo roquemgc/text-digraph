@@ -4,6 +4,7 @@ import java.io.File;
 
 import java.util.Scanner;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 public class HandleFile {
  
@@ -12,7 +13,7 @@ public class HandleFile {
 	
 	// Pick the txt file and return the content in string format
 	public String PickFile() throws Exception{
-  
+		sb.setLength(0);
 		if(fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 			
 			// Get the file
@@ -28,9 +29,10 @@ public class HandleFile {
 		   	}
 		   	input.close();
 		} else {
-			sb.append("No file was selected");
+			
+			JOptionPane.showMessageDialog(null, "No file was selected");
 	  	}
 	   	return sb.toString();
-	}
+	}	
 }
 

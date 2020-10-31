@@ -21,7 +21,7 @@ private List<String> finalText = new ArrayList<String>();
 		this.receiveTextOfTheTxtExtensionFile = receiveTextOfTheTxt;
 	}
 
-	public void RemovePunctuationString(){	
+	public void removePunctuationString(){	
 		
 		textOfTheTxtExtensionFileInLowCase = receiveTextOfTheTxtExtensionFile.toLowerCase();
 		
@@ -65,7 +65,7 @@ private List<String> finalText = new ArrayList<String>();
 
 	}
 	
-	public void SaveNewTextOftheTxtInTheList(){
+	public void saveNewTextOftheTxtInTheList(){
 		
 		String[] textNormalized = textOfTheTxtExtensionFileInLowCase.split("\\s+");
 		
@@ -73,7 +73,7 @@ private List<String> finalText = new ArrayList<String>();
 		
 	}
 	
-	public void OrderArraysWithWordsOfTheTextTxt(){
+	public void orderArraysWithWordsOfTheTextTxt(){
 		
 		textSeparateByWordsInOrder = new ArrayList<String>(textSeparateByWords);
 		
@@ -83,20 +83,17 @@ private List<String> finalText = new ArrayList<String>();
 		
 	}
 	
-	public void GeneratorFinalText() {
+	public List<String> generateFinalText() {
 	
 		int saveIndexOfTheWord = -1;
 		
 		for(int indexMain = 0; indexMain < textSeparateByWordsInOrder.size(); indexMain++) {
-		
-			for(int i = 0; i < textSeparateByWords.size(); i++){
-					
+			for(int i = 0; i < textSeparateByWords.size(); i++){	
 				int index = 0;
 					
 				if (textSeparateByWordsInOrder.get(indexMain).equals(textSeparateByWords.get(i))){
-						
+	
 				    index = i;
-				    	
 				    index = index + 1;
 				    	
 				    if (textSeparateByWords.size() > index && !textSeparateByWords.get(index).equals(textSeparateByWordsInOrder.get(indexMain))) {
@@ -106,50 +103,45 @@ private List<String> finalText = new ArrayList<String>();
 				    	nextWordsOfTheWords.add(textSeparateByWords.get(index));
 				 							
 					}
-				}				
-					
+				}						
 			}
 			
 			if(saveIndexOfTheWord != -1 && nextWordsOfTheWords.size() != 0 && !nextWordsOfTheWords.isEmpty() && nextWordsOfTheWords != null) {
 			
-			finalText.add(textSeparateByWordsInOrder.get(saveIndexOfTheWord));
-			
-			nextWordsOfTheWords = nextWordsOfTheWords.stream().distinct().collect(Collectors.toList());
-			
-			//Collections.sort(nextWordsOfTheWords);
-			
-			finalText.addAll(nextWordsOfTheWords);
-			
-			finalText.add("\n"); 
-			
+				finalText.add(textSeparateByWordsInOrder.get(saveIndexOfTheWord));		
+				nextWordsOfTheWords = nextWordsOfTheWords.stream().distinct().collect(Collectors.toList());
+				
+				//Collections.sort(nextWordsOfTheWords);
+				
+				finalText.addAll(nextWordsOfTheWords);
+				finalText.add("\n"); 
 			
 			}
-				
 			nextWordsOfTheWords.clear();
-			
 		}
-			
-		int i;
 		
-		for (i = 0; i < finalText.size(); i++) {
+		return finalText;
+	}
+	
+	public String convertToString() {
+		
+		StringBuffer sb = new StringBuffer();
+		int nextWordIndex;
+		
+		for (int i = 0; i < finalText.size(); i++) {
+			sb.append(finalText.get(i));
 			
-			System.out.printf(finalText.get(i));
+			nextWordIndex = i + 1;
 			
-			int indexOfTheNextWord = i+1;
-			
-			if(indexOfTheNextWord < finalText.size()) {
-				
-				if(finalText.get(indexOfTheNextWord).equals("\n") || (finalText.get(i).equals("\n"))) {
-					
-					continue;
-					
-				}else {
-					
-					System.out.printf(", ");
-					
+			if(nextWordIndex < finalText.size()) {
+				if(!(finalText.get(nextWordIndex).equals("\n") || (finalText.get(i).equals("\n")))) {
+					sb.append(", ");
 				}
 			}
+
 		}
+		
+		return sb.toString();
 	}
 }
 
