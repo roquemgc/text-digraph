@@ -11,6 +11,8 @@ import main.ConvertString;
 import main.HandleFile;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JTextPane;
@@ -20,6 +22,7 @@ public class MainScreen extends JFrame {
 	private JPanel contentPane;
 	private HandleFile handleFile = new HandleFile();
 	private String fileContent;
+	private List<String> textOutput = new ArrayList<String>();
 
 	public MainScreen() {
 		setTitle("Txt Converter");
@@ -79,7 +82,17 @@ public class MainScreen extends JFrame {
 						
 						call.OrderArraysWithWordsOfTheTextTxt();
 						
-						call.GeneratorFinalText();
+						textOutput = call.GeneratorFinalText();
+						
+						String finalTextOutputInString = "";
+						
+						for (String  FinaltextOutput : textOutput) {
+							
+							finalTextOutputInString  += FinaltextOutput;
+							
+						}
+						
+						txpContent.setText(finalTextOutputInString);
 					
 					}
 					

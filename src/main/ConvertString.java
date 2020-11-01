@@ -15,6 +15,7 @@ private List<String> textSeparateByWords = new ArrayList<String>();
 private List<String> textSeparateByWordsInOrder = new ArrayList<String>();
 private List<String> nextWordsOfTheWords = new ArrayList<String>();
 private List<String> finalText = new ArrayList<String>();
+private List<String> finalOutputTextFormat = new ArrayList<String>();
  
 	public ConvertString(String receiveTextOfTheTxt){  
 			
@@ -83,7 +84,7 @@ private List<String> finalText = new ArrayList<String>();
 		
 	}
 	
-	public void GeneratorFinalText() {
+	public List<String> GeneratorFinalText() {
 	
 		int saveIndexOfTheWord = -1;
 		
@@ -133,7 +134,9 @@ private List<String> finalText = new ArrayList<String>();
 		
 		for (i = 0; i < finalText.size(); i++) {
 			
-			System.out.printf(finalText.get(i));
+			//System.out.printf(finalText.get(i));
+			
+			finalOutputTextFormat.add(finalText.get(i));
 			
 			int indexOfTheNextWord = i+1;
 			
@@ -145,11 +148,15 @@ private List<String> finalText = new ArrayList<String>();
 					
 				}else {
 					
-					System.out.printf(", ");
+					//System.out.printf(", ");
+					finalOutputTextFormat.add(", ");
 					
 				}
 			}
 		}
+		
+		return finalOutputTextFormat;
+		
 	}
 }
 
