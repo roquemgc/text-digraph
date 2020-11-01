@@ -1,7 +1,11 @@
 package main;
 
 import java.io.FileWriter;
-
+/**
+ * Convert the string to csv format
+ * @author Roque Matheus Gomes Costa
+ *
+ */
 public class CreateCsvFile {
 
 	public void CreateCsv(String txtContent) {

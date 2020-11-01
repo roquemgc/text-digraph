@@ -5,13 +5,22 @@ import java.io.File;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-
+/**
+ * Receive Txt archive and return in string
+ * @author Roque Matheus Gomes Costa
+ *
+ */
 public class HandleFile {
 
 	JFileChooser fileChooser = new JFileChooser();
 	StringBuilder receiveTextOfTheTxt = new StringBuilder();
 
-	// Pick the txt file and return the content in string format
+	/**
+	 * Pick the txt file and return the content in string format
+	 * @author Roque Matheus Gomes Costa
+	 * @return returnTextOfTheTxt
+	 * @throws Exception 
+	 */
 	public String PickFile() throws Exception {
 
 		receiveTextOfTheTxt.setLength(0);

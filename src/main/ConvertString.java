@@ -5,7 +5,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
+/**
+ * Responsible class for converting strings and eliminating punctuation
+ * @author Lucas Alkimim Chaves
+ */
 public class ConvertString {
 
 	private String receiveTextOfTheTxtExtensionFile;
@@ -14,13 +17,19 @@ public class ConvertString {
 	private List<String> textSeparateByWordsInOrder = new ArrayList<String>();
 	private List<String> nextWordsOfTheWords = new ArrayList<String>();
 	private List<String> finalText = new ArrayList<String>();
-
+/**
+ * @author Lucas Alkimim Chaves
+ * Catch the text from TXT
+ * @param receiveTextOfTheTxt
+ */
 	public ConvertString(String receiveTextOfTheTxt) {
 
 		this.receiveTextOfTheTxtExtensionFile = receiveTextOfTheTxt;
 		
 	}
-
+/**
+ * @author Lucas Alkimim Chaves
+ */
 	public void RemovePunctuationString() {
 
 		textOfTheTxtExtensionFileInLowCase = receiveTextOfTheTxtExtensionFile.toLowerCase();
@@ -60,10 +69,11 @@ public class ConvertString {
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("'", "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("\\", "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("\"", "");
-		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("⁃", "");
-
 	}
-
+/**
+ * Catch normalized text and change it to string
+ * @author Lucas Alkimim Chaves
+ */
 	public void SaveNewTextOftheTxtInTheList() {
 
 		String[] textNormalized = textOfTheTxtExtensionFileInLowCase.split("\\s+");
@@ -71,7 +81,10 @@ public class ConvertString {
 		textSeparateByWords = Arrays.asList(textNormalized);
 
 	}
-
+/**
+ * Generates separate ordered text and removes repeated words
+ * @author Lucas Alkimim Chaves
+ */
 	public void OrderArraysWithWordsOfTheTextTxt() {
 
 		textSeparateByWordsInOrder = new ArrayList<String>(textSeparateByWords);
@@ -81,7 +94,11 @@ public class ConvertString {
 		Collections.sort(textSeparateByWordsInOrder);
 
 	}
-
+/**
+ * Generates final text
+ * @author Lucas Alkimim Chaves
+ * @return FormatFinalTextAndConvertToString
+ */
 	public String GenerateFinalText() {
 
 		int saveIndexOfTheWord = -1;
@@ -126,7 +143,11 @@ public class ConvertString {
 		return FormatFinalTextAndConvertToString();
 		
 	}
-
+/**
+ * Take the final text, format it and convert it to a string
+ * @author Lucas Alkimim Chaves
+ * @return finalTextFormattedForOutput
+ */
 	public String FormatFinalTextAndConvertToString() {
 
 		StringBuffer finalTextFormattedForOutput = new StringBuffer();
