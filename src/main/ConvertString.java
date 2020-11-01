@@ -61,7 +61,10 @@ public class ConvertString {
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("\\", "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("\"", "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("⁃", "");
-
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("“", "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("”", "");
+		
+		
 	}
 
 	public void SaveNewTextOftheTxtInTheList() {
