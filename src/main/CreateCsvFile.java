@@ -1,24 +1,20 @@
 package main;
 
 import java.io.FileWriter;
-import java.util.Arrays;
-import java.util.List;
-
 
 public class CreateCsvFile {
-	
-	public void createCsv(List<String> txtContent){
-	
-		try {
-			FileWriter csvWriter = new FileWriter("convertedFile.csv");
-			
-			for (String s : txtContent) {
-			    csvWriter.append(String.join(", ", s));
-			}
 
+	public void CreateCsv(String txtContent) {
+
+		try {
+
+			FileWriter csvWriter = new FileWriter("convertedFile.csv");
+			csvWriter.write(txtContent);
 			csvWriter.flush();
 			csvWriter.close();
-		} catch(Exception e) {
+
+		} catch (Exception e) {
+
 			System.out.println(e);
 		}
 	}
