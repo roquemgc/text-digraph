@@ -69,6 +69,10 @@ public class ConvertString {
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("'", "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("\\", "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("\"", "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("⁃", "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("“", "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("”", "");
+		
 	}
 /**
  * Catch normalized text and change it to string
