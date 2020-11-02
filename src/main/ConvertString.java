@@ -72,6 +72,7 @@ public class ConvertString {
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("⁃", "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("“", "");
 		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("”", "");
+		textOfTheTxtExtensionFileInLowCase = textOfTheTxtExtensionFileInLowCase.replace("\n", " ");
 		
 	}
 /**
@@ -80,7 +81,7 @@ public class ConvertString {
  */
 	public void SaveNewTextOftheTxtInTheList() {
 
-		String[] textNormalized = textOfTheTxtExtensionFileInLowCase.split("\\s+");
+		String[] textNormalized = textOfTheTxtExtensionFileInLowCase.trim().split("\\s+");
 		
 		textSeparateByWords = Arrays.asList(textNormalized);
 
