@@ -95,8 +95,11 @@ public class MainScreen extends JFrame {
 						call.removePunctuationString();
 						call.saveNewTextOftheTxtInTheList();
 						call.orderArraysWithWordsOfTheTextTxt();
+						
+						// Create the csv file
 						createFile.createCsv(call.generateFinalText());
 						
+						// Put the content of csv file in a textArea
 						txaCsv.setText(call.convertToString());
 						
 					}
@@ -115,7 +118,7 @@ public class MainScreen extends JFrame {
 		lblNewLabel.setBounds(24, 75, 138, 15);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblTxtConvertedTo = new JLabel("Txt converted to Csv");
+		JLabel lblTxtConvertedTo = new JLabel("Txt converted to csv");
 		lblTxtConvertedTo.setBounds(382, 75, 195, 15);
 		contentPane.add(lblTxtConvertedTo);
 		
